@@ -27,7 +27,7 @@ For instance. The following code snippet will build the arrays as follows:
 ```
 
 ```
- paramaters -->     [SOME String, 36, 2020-04-14]
+ paramaters -->     ["SOME String", 36, 2020-04-14]
  paramaterTypes --> [12, 4, 93]
 ```
 
