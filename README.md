@@ -22,38 +22,15 @@ For instance. The following code snippet will build the arrays as follows:
                 .parameterWihType(now, Types.TIMESTAMP)
                 .build();
 
-        Object[] paramaters = pMapper.getParameter();
+        Object[] parameters = pMapper.getParameter();
         int[] paramaterTypes = pMapper.getParameterTypes();
 ```
 
 ```
- paramaters -->     ["SOME String", 36, 2020-04-14]
+ parameters -->     ["SOME String", 36, 2020-04-14]
  paramaterTypes --> [12, 4, 93]
 ```
 
-If you wish to transform the Object on input or provide some validation
-you simply would provide a function as demonstrated here:
-
-For instance. Use a Function that inserts Y or N based on the input paramater starting with the Letter "S"
-
-```
-        Predicate<String> stringStartWithT = s -> s.startsWith("S");
-
-        ParameterTypeArrayBuilder pMapper = ParameterTypeArrayBuilder.newBuilder()
-                .parameterWihType(stringStartWithT.test("SOME String"), Types.BOOLEAN)
-                .parameterWihType(stringStartWithT.test("Not SOME String"), Types.BOOLEAN)
-                .build();
-
-        Object[] paramaters = pMapper.getParameter();      
-
-```
-
-The Parameters on input to the SQL would be transformed according to the Function Interface which is a simple Predicate. The value for `Types.BOOLEAN` is 16.
-
-```
- paramaters -->     [true, false]
- paramaterTypes --> [16, 16]   
-```
 
 The following will provide a validation check, preventing nulls from
 being inserted, instead replacing them with empty strings:
@@ -68,7 +45,7 @@ being inserted, instead replacing them with empty strings:
                 .parameterWihType("NormalNoMod", Types.LONGVARCHAR) // Do Nothing
                 .build();
 
-        Object[] paramaters = pMapper.getParameter();
+        Object[] parameters = pMapper.getParameter();
         int[] paramaterTypes = pMapper.getParameterTypes();     
 
 ```
@@ -76,8 +53,35 @@ being inserted, instead replacing them with empty strings:
 The Parameters on input to the SQL would be transformed according to the Function Interface which is a simple Predicate. The value for `Types.STRING` is `12` and `Types.LONGVARCHAR` is `-1`.
 
 ```
- paramaters -->     ["", "Test", "1000", NormalNoMod]
+ parameters -->     ["", "Test", "1000", NormalNoMod]
  paramaterTypes --> [12, 12, 12, -1]
+```
+
+Of course you don't have to provide the java convenience Function as a
+parameter. You could always inline it as in the following demonstration:
+
+Transform the Object on input or provide some validation you simply
+would provide a function as demonstrated here:
+
+For instance. Use a Function that inserts Y or N based on the input paramater starting with the Letter "S"
+
+```
+        Predicate<String> stringStartWithT = s -> s.startsWith("S");
+
+        ParameterTypeArrayBuilder pMapper = ParameterTypeArrayBuilder.newBuilder()
+                .parameterWihType(stringStartWithT.test("SOME String"), Types.BOOLEAN)
+                .parameterWihType(stringStartWithT.test("Not SOME String"), Types.BOOLEAN)
+                .build();
+
+        Object[] parameters = pMapper.getParameter();      
+
+```
+
+The Parameters on input to the SQL would be transformed according to the Function Interface which is a simple Predicate. The value for `Types.BOOLEAN` is 16.
+
+```
+ parameters -->     [true, false]
+ paramaterTypes --> [16, 16]   
 ```
 ### See the `ParameterTypeArrayBuilderTest` classfor running examples
 

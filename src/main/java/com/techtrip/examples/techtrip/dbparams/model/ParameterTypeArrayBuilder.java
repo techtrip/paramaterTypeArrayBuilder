@@ -32,8 +32,8 @@ public class ParameterTypeArrayBuilder {
     }
 
     private ParameterTypeArrayBuilder(Builder builder) {
-        parameter.addAll(builder.paramaters);
-        parameterTypes.addAll(builder.paramaterTypes);
+        parameter.addAll(builder.parameters);
+        parameterTypes.addAll(builder.parameterTypes);
     }
 
     public static Builder newBuilder() {
@@ -41,21 +41,21 @@ public class ParameterTypeArrayBuilder {
     }
 
     public static final class Builder {
-        private List<Object> paramaters = new ArrayList<>();
-        private List<Integer> paramaterTypes = new ArrayList<>();
+        private List<Object> parameters = new ArrayList<>();
+        private List<Integer> parameterTypes = new ArrayList<>();
 
         private Builder() {
         }
 
         public Builder parameterWihType(Object paramater, Integer paramaterType) {
-            paramaters.add(paramater);
-            paramaterTypes.add(paramaterType);
+            parameters.add(paramater);
+            parameterTypes.add(paramaterType);
             return this;
         }
 
         public <K, V> Builder parameterWihType(K paramater, Integer paramatertype, Function<K, V> parameterModifier) {
-            paramaters.add(parameterModifier.apply(paramater));
-            paramaterTypes.add(paramatertype);
+            parameters.add(parameterModifier.apply(paramater));
+            parameterTypes.add(paramatertype);
             return this;
         }
 

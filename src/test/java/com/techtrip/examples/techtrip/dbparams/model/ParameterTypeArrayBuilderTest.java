@@ -26,17 +26,17 @@ class ParameterTypeArrayBuilderTest {
                 .parameterWihType(now, Types.TIMESTAMP)
                 .build();
 
-        Object[] paramaters = pMapper.getParameter();
-        int[] paramaterTypes = pMapper.getParameterTypes();
+        Object[] parameters = pMapper.getParameter();
+        int[] parameterTypes = pMapper.getParameterTypes();
 
-        assertThat(paramaters[0]).isEqualTo("SOME String");
-        assertThat(paramaterTypes[0]).isEqualTo(Types.VARCHAR);
+        assertThat(parameters[0]).isEqualTo("SOME String");
+        assertThat(parameterTypes[0]).isEqualTo(Types.VARCHAR);
 
-        assertThat(paramaters[1]).isEqualTo(36);
-        assertThat(paramaterTypes[1]).isEqualTo(Types.INTEGER);
+        assertThat(parameters[1]).isEqualTo(36);
+        assertThat(parameterTypes[1]).isEqualTo(Types.INTEGER);
 
-        assertThat(paramaters[2]).isEqualTo(now);
-        assertThat(paramaterTypes[2]).isEqualTo(Types.TIMESTAMP);
+        assertThat(parameters[2]).isEqualTo(now);
+        assertThat(parameterTypes[2]).isEqualTo(Types.TIMESTAMP);
     }
 
     @Test
@@ -49,14 +49,14 @@ class ParameterTypeArrayBuilderTest {
                 .parameterWihType(stringStartWithT.test("Not SOME String"), Types.BOOLEAN)
                 .build();
 
-        Object[] paramaters = pMapper.getParameter();
-        int[] paramaterTypes = pMapper.getParameterTypes();
+        Object[] parameters = pMapper.getParameter();
+        int[] parameterTypes = pMapper.getParameterTypes();
 
-        assertTrue((boolean)paramaters[0]);
-        assertThat(paramaterTypes[0]).isEqualTo(Types.BOOLEAN);
+        assertTrue((boolean)parameters[0]);
+        assertThat(parameterTypes[0]).isEqualTo(Types.BOOLEAN);
 
-        assertFalse((boolean)paramaters[1]);
-        assertThat(paramaterTypes[1]).isEqualTo(Types.BOOLEAN);
+        assertFalse((boolean)parameters[1]);
+        assertThat(parameterTypes[1]).isEqualTo(Types.BOOLEAN);
     }
 
     @Test
@@ -78,20 +78,20 @@ class ParameterTypeArrayBuilderTest {
                 .parameterWihType("NormalNoMod", Types.LONGVARCHAR) // Do Nothing
                 .build();
 
-        Object[] paramaters = pMapper.getParameter();
-        int[] paramaterTypes = pMapper.getParameterTypes();
+        Object[] parameters = pMapper.getParameter();
+        int[] parameterTypes = pMapper.getParameterTypes();
 
-        assertThat(paramaters[0]).isEqualTo("");
-        assertThat(paramaterTypes[0]).isEqualTo(Types.VARCHAR);
+        assertThat(parameters[0]).isEqualTo("");
+        assertThat(parameterTypes[0]).isEqualTo(Types.VARCHAR);
 
-        assertThat(paramaters[1]).isEqualTo("Test");
-        assertThat(paramaterTypes[1]).isEqualTo(Types.VARCHAR);
+        assertThat(parameters[1]).isEqualTo("Test");
+        assertThat(parameterTypes[1]).isEqualTo(Types.VARCHAR);
 
-        assertThat(paramaters[2]).isEqualTo("1000");
-        assertThat(paramaterTypes[2]).isEqualTo(Types.VARCHAR);
+        assertThat(parameters[2]).isEqualTo("1000");
+        assertThat(parameterTypes[2]).isEqualTo(Types.VARCHAR);
 
-        assertThat(paramaters[3]).isEqualTo("NormalNoMod");
-        assertThat(paramaterTypes[3]).isEqualTo(Types.LONGVARCHAR);
+        assertThat(parameters[3]).isEqualTo("NormalNoMod");
+        assertThat(parameterTypes[3]).isEqualTo(Types.LONGVARCHAR);
     }
 
 
