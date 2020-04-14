@@ -83,5 +83,5 @@ The Parameters on input to the SQL would be transformed according to the Functio
  parameters -->     [true, false]
  paramaterTypes --> [16, 16]   
 ```
-### See the `ParameterTypeArrayBuilderTest` classfor running examples
+### See the `ParameterTypeArrayBuilderTest` class for running examples
 
