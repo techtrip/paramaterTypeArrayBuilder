@@ -67,7 +67,7 @@ class ParameterTypeArrayBuilderTest {
          * Alternately we could inline the following but I am doing this here for
          * Demonstration purposes
          *
-         * The function herte guards against nulls and replaces them with a value
+         * The function here guards against nulls and replaces them with a value
          */
         Function<String,String> contrivedNullToEmptyStringFunction = i -> { if (StringUtils.isEmpty(i)) return ""; return i;};
 
