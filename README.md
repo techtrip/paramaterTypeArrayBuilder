@@ -15,7 +15,7 @@ The Builder provides two basic builder methods
 
 For instance. The following code snippet will build the arrays as follows:
 
-```
+```java
         ParameterTypeArrayBuilder pMapper = ParameterTypeArrayBuilder.newBuilder()
                 .parameterWihType("SOME String", Types.VARCHAR)
                 .parameterWihType(36, Types.INTEGER)
@@ -35,7 +35,7 @@ For instance. The following code snippet will build the arrays as follows:
 The following will provide a validation check, preventing nulls from
 being inserted, instead replacing them with empty strings:
 
-```
+```java
         Function<String,String> contrivedNullToEmptyStringFunction = i -> { if (StringUtils.isEmpty(i)) return ""; return i;};
 
         ParameterTypeArrayBuilder pMapper = ParameterTypeArrayBuilder.newBuilder()
@@ -65,7 +65,7 @@ would provide a function as demonstrated here:
 
 For instance. Use a Function that inserts Y or N based on the input paramater starting with the Letter "S"
 
-```
+```java
         Predicate<String> stringStartWithT = s -> s.startsWith("S");
 
         ParameterTypeArrayBuilder pMapper = ParameterTypeArrayBuilder.newBuilder()
